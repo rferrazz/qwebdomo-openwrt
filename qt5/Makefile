@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=qt5-minimal
+PKG_NAME:=qt5
 PKG_VERSION:=5.0.2
 PKG_RELEASE:=1
 PKG_MD5SUM:=87cae8ae2f82f41ba027c2db0ab639b7
@@ -19,10 +19,10 @@ PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/qt5-minimal
+define Package/qt5
   SECTION:=libraries
   CATEGORY:=Libraries
-  TITLE:=qt5-minimal
+  TITLE:=qt5
   URL:=http://qt-project.org
   DEPENDS:=+zlib +python +python-bzip2 +libstdcpp @!LINUX_2_6
 endef
@@ -113,9 +113,9 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
-define Package/qt5-minimal/install
+define Package/qt5/install
   #TODO: copy files
 endef
 
-$(eval $(call BuildPackage,qt5-minimal))
+$(eval $(call BuildPackage,qt5))
 
