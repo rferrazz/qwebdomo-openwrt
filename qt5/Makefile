@@ -24,7 +24,7 @@ define Package/qt5-minimal
   CATEGORY:=Libraries
   TITLE:=qt5-minimal
   URL:=http://qt-project.org
-  DEPENDS:=+zlib +libbz2 +libstdcpp @!LINUX_2_6
+  DEPENDS:=+zlib +python +python-bzip2 +libstdcpp @!LINUX_2_6
 endef
 
 define Build/Configure
