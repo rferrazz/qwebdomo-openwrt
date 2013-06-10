@@ -15,6 +15,7 @@ PKG_MD5SUM:=87cae8ae2f82f41ba027c2db0ab639b7
 PKG_SOURCE:=qt-everywhere-opensource-src-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://download.qt-project.org/official_releases/qt/5.0/$(PKG_VERSION)/single
 PKG_BUILD_DIR=$(BUILD_DIR)/qt-everywhere-opensource-src-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=+python +python-bzip2
 PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -24,7 +25,7 @@ define Package/qt5
   CATEGORY:=Libraries
   TITLE:=qt5
   URL:=http://qt-project.org
-  DEPENDS:=+zlib +python +python-bzip2 +libstdcpp @!LINUX_2_6
+  DEPENDS:=+zlib +libstdcpp @!LINUX_2_6
 endef
 
 define Build/Configure
