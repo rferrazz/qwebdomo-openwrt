@@ -34,7 +34,6 @@ define Build/Configure
 	$(CP) ./files/$(FILEPFX)qmake.conf $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++/qmake.conf
 	$(CP) ./files/$(FILEPFX)qplatformdefs.h $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	( cd $(PKG_BUILD_DIR) ; \
-		export PYTHONPATH="$(PYTHON_LIB_DIR):$(STAGING_DIR)/$(PYTHON_PKG_DIR)"; \
 		TARGET_CC="$(TARGET_CROSS)gcc" \
 		TARGET_CXX="$(TARGET_CROSS)g++" \
 		TARGET_AR="$(TARGET_CROSS)ar cqs" \
@@ -50,6 +49,7 @@ define Build/Configure
 		CXXFLAGS= \
 		LDFLAGS= \
 		./configure \
+			-D python=$(HOST_PYTHON_BIN) \
 			-arch mipsel \
 			-no-c++11 \
 			-sysroot $(STAGING_DIR) \
@@ -98,6 +98,7 @@ define Build/Configure
 endef
 
 define Build/Compile
+	export PYTHONPATH="$(PYTHON_LIB_DIR):$(STAGING_DIR)/$(PYTHON_PKG_DIR)"; \
 	TARGET_CC="$(TARGET_CROSS)gcc" \
 	TARGET_CXX="$(TARGET_CROSS)g++" \
 	TARGET_AR="$(TARGET_CROSS)ar cqs" \
