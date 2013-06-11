@@ -16,7 +16,8 @@ PKG_SOURCE:=qt-everywhere-opensource-src-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://download.qt-project.org/official_releases/qt/5.0/$(PKG_VERSION)/single
 PKG_BUILD_DIR=$(BUILD_DIR)/qt-everywhere-opensource-src-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=python python-bzip2
+PKG_BUILD_DEPENDS:=+python +python-bzip2
+HOST_BUILD_DEPENDS:=+python +python-bzip2
 
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python-package.mk)
