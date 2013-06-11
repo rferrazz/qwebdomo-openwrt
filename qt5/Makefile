@@ -19,6 +19,7 @@ PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=python python-bzip2
 
 include $(INCLUDE_DIR)/package.mk
+$(call include_mk, python-package.mk)
 
 define Package/qt5
   SECTION:=libraries
@@ -33,6 +34,7 @@ define Build/Configure
 	$(CP) ./files/$(FILEPFX)qmake.conf $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++/qmake.conf
 	$(CP) ./files/$(FILEPFX)qplatformdefs.h $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++/qplatformdefs.h
 	( cd $(PKG_BUILD_DIR) ; \
+		export PYTHONPATH="$(PYTHON_LIB_DIR):$(STAGING_DIR)/$(PYTHON_PKG_DIR)"; \
 		TARGET_CC="$(TARGET_CROSS)gcc" \
 		TARGET_CXX="$(TARGET_CROSS)g++" \
 		TARGET_AR="$(TARGET_CROSS)ar cqs" \
