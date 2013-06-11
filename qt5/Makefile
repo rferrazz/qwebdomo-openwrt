@@ -49,7 +49,6 @@ define Build/Configure
 		CXXFLAGS= \
 		LDFLAGS= \
 		./configure \
-			-D python=$(HOST_PYTHON_BIN) \
 			-arch mipsel \
 			-no-c++11 \
 			-sysroot $(STAGING_DIR) \
@@ -99,6 +98,7 @@ endef
 
 define Build/Compile
 	export PYTHONPATH="$(PYTHON_LIB_DIR):$(STAGING_DIR)/$(PYTHON_PKG_DIR)"; \
+	export PATH="$(STAGING_DIR)/usr/bin:$(PATH)"; \
 	TARGET_CC="$(TARGET_CROSS)gcc" \
 	TARGET_CXX="$(TARGET_CROSS)g++" \
 	TARGET_AR="$(TARGET_CROSS)ar cqs" \
