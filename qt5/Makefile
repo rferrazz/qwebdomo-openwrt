@@ -85,13 +85,17 @@ define Build/Configure
 			-no-eglfs \
 			-no-directfb \
 			-no-linuxfb \
+			-no-kms \
 			-no-opengl \
+			-no-javascript-jit \
 			-make libs \
 			-nomake webkit \
 			-nomake docs \
 			-nomake examples \
 			-nomake demos \
 			-nomake tests \
+			-skip qtdeclarative \
+			-skip qtjsbackend \
 			-v \
 	)
 #TODO: add configure options
