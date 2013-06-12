@@ -16,8 +16,7 @@ PKG_SOURCE:=qt-everywhere-opensource-src-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://download.qt-project.org/official_releases/qt/5.0/$(PKG_VERSION)/single
 PKG_BUILD_DIR=$(BUILD_DIR)/qt-everywhere-opensource-src-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
-PKG_BUILD_DEPENDS:=+python +python-bzip2
-HOST_BUILD_DEPENDS:=+python/host +python-bzip2/host
+PKG_BUILD_DEPENDS:=+libstdcpp
 
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python-package.mk)
@@ -96,14 +95,15 @@ define Build/Configure
 			-nomake tests \
 			-skip qtdeclarative \
 			-skip qtjsbackend \
+			-skip qtmultimedia \
+			-skip activeqt \
+			-skip qtwebkit \
 			-v \
 	)
 #TODO: add configure options
 endef
 
 define Build/Compile
-	export PYTHONPATH="$(PYTHON_LIB_DIR):$(STAGING_DIR)/$(PYTHON_PKG_DIR)"; \
-	export PATH="$(STAGING_DIR)/usr/bin:$(PATH)"; \
 	TARGET_CC="$(TARGET_CROSS)gcc" \
 	TARGET_CXX="$(TARGET_CROSS)g++" \
 	TARGET_AR="$(TARGET_CROSS)ar cqs" \
