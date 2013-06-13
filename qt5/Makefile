@@ -98,6 +98,7 @@ define Build/Configure
 			-skip qtmultimedia \
 			-skip activeqt \
 			-skip qtwebkit \
+			-skip qtwebkit-examples-and-demos \
 			-v \
 	)
 #TODO: add configure options
