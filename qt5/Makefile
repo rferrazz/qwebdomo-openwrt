@@ -34,6 +34,30 @@ define Package/qt5-core
   TITLE+=core
 endef
 
+define Package/qt5-concurrent
+  $(call Package/qt5/Default)
+  TITLE+=concurrent
+  DEPENDS+=+qt5-core
+endef
+
+define Package/qt5-network
+  $(call Package/qt5/Default)
+  TITLE+=network
+  DEPENDS+=+qt5-core
+endef
+
+define Package/qt5-xml
+  $(call Package/qt5/Default)
+  TITLE+=xml
+  DEPENDS+=+qt5-core
+endef
+
+define Package/qt5-xmlpatterns
+  $(call Package/qt5/Default)
+  TITLE+=xmlpatterns
+  DEPENDS+=+qt5-core +qt5-network
+endef
+
 define Build/Configure
 	mkdir -p $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++
 	$(CP) ./files/$(FILEPFX)qmake.conf $(PKG_BUILD_DIR)/qtbase/mkspecs/linux-openwrt-g++/qmake.conf
@@ -55,7 +79,6 @@ define Build/Configure
 		./configure \
 			-arch mipsel \
 			-no-c++11 \
-			-sysroot $(STAGING_DIR) \
 			-prefix /usr \
 			-bindir /usr/bin \
 			-libdir /usr/lib \
@@ -130,22 +153,75 @@ define Build/Compile
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(2)/bin $(1)/usr/mkspecs $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
+	$(INSTALL_DIR) \
+		$(2)/bin 
+		$(1)/usr/mkspecs 
+		$(1)/usr/bin
+		$(1)/usr/include
+		$(1)/usr/lib
+		$(1)/usr/lib/pkgconfig
+
 	$(INSTALL_DIR) $(STAGING_DIR)/mk/
 	$(INSTALL_DATA) ./files/qmake.mk $(STAGING_DIR)/mk/
-	
+
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/bin/{qmake,moc,rcc,lrelease,qdoc} \
 		$(2)/bin/
-	
+
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/mkspecs/* \
 		$(1)/usr/mkspecs/
+
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*
+		$(1)/usr/lib/pkgconfig/
+
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/include/*
+		$(1)/usr/include/
 		
 	$(CP) \
-		
-	
+		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
+		$(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,qt5))
+define Package/qt5-core/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Core.so* \
+		$(1)/usr/lib/
+endef
 
+define Package/qt5-concurrent/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Concurrent.so* \
+		$(1)/usr/lib/
+endef
+
+define Package/qt5-network/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Network.so* \
+		$(1)/usr/lib/
+endef
+
+define Package/qt5-xml/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Xml.so* \
+		$(1)/usr/lib/
+endef
+
+define Package/qt5-xmlpatterns/install
+	$(INSTALL_DIR) $(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5XmlPatterns.so* \
+		$(1)/usr/lib/
+endef
+
+$(eval $(call BuildPackage,qt5-core))
+$(eval $(call BuildPackage,qt5-concurrent))
+$(eval $(call BuildPackage,qt5-network))
+$(eval $(call BuildPackage,qt5-xml))
+$(eval $(call BuildPackage,qt5-xmlpatterns))

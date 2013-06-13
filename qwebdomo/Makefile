@@ -17,23 +17,20 @@ PKG_SOURCE_VERSION:=a938cf1ee284f207f223d84d5c35341e983ea551
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=+qmake
+PKG_BUILD_DEPENDS:=+qt5-core +qt5-network
 
 include $(INCLUDE_DIR)/package.mk
+$(call	include_mk, qmake.mk)
 
 define 	Package/qwebdomo
   CATEGORY:=WHIA
   SECTION:=library
   TITLE:=qwebdomo
-  DEPENDS:=+qt5-qtcore +qt5-qtnetwork +qxmpp
+  DEPENDS:=+qt5-core +qt5-network +qxmpp
 endef
 
-define Build/Compile
-  qmake PREFIX=/usr QW_DEVICE=1
-  
-  $(MAKE) -C $(PKG_BUILD_DIR)
-  INSTALL_ROOT=$(PKG_INSTALL_DIR) \
-  $(MAKE) -C $(PKG_BUILD_DIR) install
+define Build/Configure
+  $(call Build/Configure/Qmake,QWebDomo,QW_DEVICE=1)
 endef
 
 define Package/qwebdomo/install
