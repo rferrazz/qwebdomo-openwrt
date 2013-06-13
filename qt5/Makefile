@@ -100,6 +100,7 @@ define Build/Configure
 			-skip qtwebkit \
 			-skip qtwebkit-examples-and-demos \
 			-skip qtimageformats \
+			-skip qtgraphicaleffects \
 			-v \
 	)
 #TODO: add configure options
