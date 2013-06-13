@@ -52,11 +52,11 @@ define Build/Configure
 			-arch mipsel \
 			-no-c++11 \
 			-sysroot $(STAGING_DIR) \
-			-prefix $(CONFIGURE_PREFIX) \
-			-bindir $(CONFIGURE_PREFIX)/bin \
-			-libdir $(CONFIGURE_PREFIX)/lib \
-			-datadir $(CONFIGURE_PREFIX)/share/Qt \
-			-plugindir $(CONFIGURE_PREFIX)/lib/Qt/plugins \
+			-prefix /usr \
+			-bindir /usr/bin \
+			-libdir /usr/lib \
+			-datadir /usr/share/Qt \
+			-plugindir /usr/lib/Qt/plugins \
 			-xplatform linux-openwrt-g++ \
 			-opensource \
 			-confirm-license \
