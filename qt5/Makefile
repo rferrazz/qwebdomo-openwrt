@@ -19,14 +19,19 @@ PKG_BUILD_PARALLEL:=1
 PKG_BUILD_DEPENDS:=+libstdcpp
 
 include $(INCLUDE_DIR)/package.mk
-$(call include_mk, python-package.mk)
+-include $(if $(DUMP),,./files/qmake.mk)
 
-define Package/qt5
+define Package/qt5/Default
   SECTION:=libraries
   CATEGORY:=Libraries
-  TITLE:=qt5
+  TITLE:=qt5-
   URL:=http://qt-project.org
   DEPENDS:=+zlib +libstdcpp @!LINUX_2_6
+endef
+
+define Package/qt5-core
+  $(call Package/qt5/Default)
+  TITLE+=core
 endef
 
 define Build/Configure
@@ -44,7 +49,6 @@ define Build/Configure
 		TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
 		TARGET_LIBDIRS="$(TARGET_LIBDIRS)" \
-		PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
 		CFLAGS= \
 		CXXFLAGS= \
 		LDFLAGS= \
@@ -104,7 +108,6 @@ define Build/Configure
 			-skip qtdoc \
 			-v \
 	)
-#TODO: add configure options
 endef
 
 define Build/Compile
@@ -126,8 +129,22 @@ define Build/Compile
 	$(MAKE) -C $(PKG_BUILD_DIR) install
 endef
 
-define Package/qt5/install
-  #TODO: copy files
+define Build/InstallDev
+	$(INSTALL_DIR) $(2)/bin $(1)/usr/mkspecs $(1)/usr/bin $(1)/usr/include $(1)/usr/lib
+	$(INSTALL_DIR) $(STAGING_DIR)/mk/
+	$(INSTALL_DATA) ./files/qmake.mk $(STAGING_DIR)/mk/
+	
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/bin/{qmake,moc,rcc,lrelease,qdoc} \
+		$(2)/bin/
+	
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/mkspecs/* \
+		$(1)/usr/mkspecs/
+		
+	$(CP) \
+		
+	
 endef
 
 $(eval $(call BuildPackage,qt5))
