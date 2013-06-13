@@ -24,7 +24,7 @@ $(call	include_mk, qmake.mk)
 
 define 	Package/qwebdomo
   CATEGORY:=WHIA
-  SECTION:=library
+  SECTION:=libraries
   TITLE:=qwebdomo
   DEPENDS:=+qt5-core +qt5-network +qxmpp
 endef

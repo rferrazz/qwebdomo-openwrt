@@ -21,8 +21,8 @@ include $(INCLUDE_DIR)/package.mk
 $(call	include_mk, qmake.mk)
 
 define 	Package/qxmpp
-  CATEGORY:=libraries
-  SECTION:=library
+  CATEGORY:=Libraries
+  SECTION:=libraries
   TITLE:=qxmpp
   DEPENDS:=+qt5-qtcore +qt5-qtnetwork
 endef
