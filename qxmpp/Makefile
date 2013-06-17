@@ -11,8 +11,9 @@ PKG_NAME:=qxmpp
 PKG_VERSION:=0.7.6
 PKG_RELEASE:=1
 
-PKG_SOURCE_URL:=https://qxmpp.googlecode.com/files
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://qxmpp.googlecode.com/files
+PKG_MD5SUM:=ee45a97313306ded2ff0f6618a3ed1e1
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
