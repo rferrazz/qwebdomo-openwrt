@@ -33,6 +33,9 @@ define Build/Configure/Qmake
 	TARGET_LIBS="$(TARGET_LIBS)" \
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	STAGING_DIR="$(STAGING_DIR)" \
+  CFLAGS= \
+  CXXFLAGS= \
+  LDFLAGS= \
 	qmake \
 		-spec $(QMAKE_SPECFILE) \
 		-o $(PKG_BUILD_DIR)/Makefile \
@@ -55,6 +58,9 @@ define Build/Compile/Default
 	TARGET_LIBS="$(TARGET_LIBS)" \
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	STAGING_DIR="$(STAGING_DIR)" \
+  CFLAGS= \
+  CXXFLAGS= \
+  LDFLAGS= \
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR)/$(MAKE_PATH) \
 		$(1);
 endef
