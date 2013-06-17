@@ -32,7 +32,6 @@ endef
 define Package/qt5-core
   $(call Package/qt5/Default)
   TITLE+=core
-  DEPENDS+=+qt5-core
 endef
 
 define Package/qt5-concurrent
