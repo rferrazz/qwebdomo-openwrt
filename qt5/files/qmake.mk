@@ -5,7 +5,7 @@
 # See /LICENSE for more information.
 #
 
-QMAKE_SPECFILE:=$(STAGING_DIR)/usr/share/mkspecs/linux-openwrt-g++
+QMAKE_SPECFILE:=$(STAGING_DIR)/usr/mkspecs/linux-openwrt-g++
 
 TARGET_INCDIRS +=\
 	$(TOOLCHAIN_DIR)/include \
