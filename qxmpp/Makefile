@@ -23,7 +23,7 @@ define 	Package/qxmpp
   CATEGORY:=Libraries
   SECTION:=libraries
   TITLE:=qxmpp
-  DEPENDS:=+qt5-core +qt5-network
+  DEPENDS:=+qt5-core +qt5-network +qt5-xml
 endef
 
 define Build/Configure
