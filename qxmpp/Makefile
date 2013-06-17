@@ -30,4 +30,8 @@ define Build/Configure
   $(call Build/Configure/Qmake,qxmpp)
 endef
 
+define Package/qxmpp/Install
+#TODO: copy files
+endef
+
 $(eval $(call BuildPackage,qxmpp))
