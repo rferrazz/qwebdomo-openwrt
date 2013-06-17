@@ -154,13 +154,12 @@ define Build/Compile
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) \
-		$(2)/bin 
-		$(1)/usr/mkspecs 
-		$(1)/usr/bin
-		$(1)/usr/include
-		$(1)/usr/lib
-		$(1)/usr/lib/pkgconfig
+	$(INSTALL_DIR) $(2)/bin 
+	$(INSTALL_DIR) $(1)/usr/mkspecs 
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/usr/include
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
 
 	$(INSTALL_DIR) $(STAGING_DIR)/mk/
 	$(INSTALL_DATA) ./files/qmake.mk $(STAGING_DIR)/mk/
