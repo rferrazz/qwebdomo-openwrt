@@ -173,11 +173,11 @@ define Build/InstallDev
 		$(1)/usr/mkspecs/
 
 	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*
+		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/* \
 		$(1)/usr/lib/pkgconfig/
 
 	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/include/*
+		$(PKG_INSTALL_DIR)/usr/include/* \
 		$(1)/usr/include/
 		
 	$(CP) \
