@@ -171,19 +171,19 @@ define Build/InstallDev
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/mkspecs/* \
-		$(STAGING_DIR)/usr/mkspecs/
+		$(1)/usr/mkspecs/
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*
-		$(STAGING_DIR)/usr/lib/pkgconfig/
+		$(1)/usr/lib/pkgconfig/
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/include/*
-		$(STAGING_DIR)/usr/include/
+		$(1)/usr/include/
 		
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
-		$(STAGING_DIR)/usr/lib/
+		$(1)/usr/lib/
 endef
 
 define Package/qt5-core/install
