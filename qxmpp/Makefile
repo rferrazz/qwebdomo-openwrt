@@ -15,7 +15,7 @@ PKG_SOURCE_URL:=https://qxmpp.googlecode.com/files
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=+qt5-core +qt5-network +qt5/host
+PKG_BUILD_DEPENDS:=+qt5-core +qt5-network
 
 include $(INCLUDE_DIR)/package.mk
 $(call	include_mk, qmake.mk)
@@ -29,10 +29,6 @@ endef
 
 define Build/Configure
   $(call Build/Configure/Qmake,qxmpp)
-endef
-
-define Package/qxmpp/install
-#TODO: add install step
 endef
 
 $(eval $(call BuildPackage,qxmpp))
