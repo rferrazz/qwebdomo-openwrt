@@ -24,14 +24,15 @@ include $(INCLUDE_DIR)/package.mk
 define Package/qt5/Default
   SECTION:=libraries
   CATEGORY:=Libraries
-  TITLE:=qt5-
+  TITLE:=qt5
   URL:=http://qt-project.org
-  DEPENDS:=+zlib +libstdcpp @!LINUX_2_6
+  DEPENDS:=+librt +zlib +libstdcpp +libpthread @!LINUX_2_6
 endef
 
 define Package/qt5-core
   $(call Package/qt5/Default)
   TITLE+=core
+  DEPENDS+=+qt5-core
 endef
 
 define Package/qt5-concurrent
@@ -70,20 +71,20 @@ define Build/Configure
 		TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
 		TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 		TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-		TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS)" \
+		TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -lpthread -lrt" \
 		TARGET_INCDIRS="$(TARGET_INCDIRS)" \
-		TARGET_LIBDIRS="$(TARGET_LIBDIRS)" \
+		TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 		CFLAGS= \
 		CXXFLAGS= \
 		LDFLAGS= \
 		./configure \
 			-arch mipsel \
 			-no-c++11 \
-			-prefix /usr \
-			-bindir /usr/bin \
-			-libdir /usr/lib \
-			-datadir /usr/share/Qt \
-			-plugindir /usr/lib/Qt/plugins \
+			-prefix $(CONFIGURE_PREFIX) \
+			-bindir $(CONFIGURE_PREFIX)/bin \
+			-libdir $(CONFIGURE_PREFIX)/lib \
+			-datadir $(CONFIGURE_PREFIX)/share/Qt \
+			-plugindir $(CONFIGURE_PREFIX)/lib/Qt/plugins \
 			-xplatform linux-openwrt-g++ \
 			-opensource \
 			-confirm-license \
@@ -141,9 +142,9 @@ define Build/Compile
 	TARGET_RANLIB="$(TARGET_CROSS)ranlib" \
 	TARGET_CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 	TARGET_CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
-	TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -ldl" \
+	TARGET_LDFLAGS="$(TARGET_LDFLAGS) $(EXTRA_LDFLAGS) -ldl -lpthread -lrt" \
 	TARGET_INCDIRS="$(TARGET_INCDIRS)" \
-	TARGET_LIBDIRS="$(TARGET_LIBDIRS)" \
+	TARGET_LIBDIRS="$(TARGET_LIBDIRS) $(STAGING_DIR)/usr/lib/" \
 	STAGING_DIR="$(STAGING_DIR)" \
 	STAGING_DIR_HOST="$(STAGING_DIR)/../host" \
 	PKG_CONFIG_SYSROOT="$(STAGING_DIR)" \
@@ -170,19 +171,19 @@ define Build/InstallDev
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/mkspecs/* \
-		$(1)/usr/mkspecs/
+		$(STAGING_DIR)/usr/mkspecs/
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/pkgconfig/*
-		$(1)/usr/lib/pkgconfig/
+		$(STAGING_DIR)/usr/lib/pkgconfig/
 
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/include/*
-		$(1)/usr/include/
+		$(STAGING_DIR)/usr/include/
 		
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
-		$(1)/usr/lib/
+		$(STAGING_DIR)/usr/lib/
 endef
 
 define Package/qt5-core/install
