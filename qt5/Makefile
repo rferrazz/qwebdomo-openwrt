@@ -159,6 +159,7 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
+	$(INSTALL_DIR) $(1)/usr/lib/cmake
 
 	$(INSTALL_DIR) $(STAGING_DIR)/mk/
 	$(INSTALL_DATA) ./files/qmake.mk $(STAGING_DIR)/mk/
@@ -190,6 +191,10 @@ define Build/InstallDev
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/*.la* \
 		$(1)/usr/lib/
+
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/cmake/* \
+		$(1)/usr/lib/cmake/
 endef
 
 define Package/qt5-core/install
