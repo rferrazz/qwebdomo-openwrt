@@ -182,12 +182,26 @@ define Build/InstallDev
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
 		$(1)/usr/lib/
+
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/*.prl* \
+		$(1)/usr/lib/
+	
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/*.la* \
+		$(1)/usr/lib/
 endef
 
 define Package/qt5-core/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/libQt5Core.so* \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Core.prl \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Core.la \
 		$(1)/usr/lib/
 endef
 
@@ -196,12 +210,24 @@ define Package/qt5-concurrent/install
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/libQt5Concurrent.so* \
 		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Concurrent.prl \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Concurrent.la \
+		$(1)/usr/lib/
 endef
 
 define Package/qt5-network/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/libQt5Network.so* \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Network.prl \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Network.la \
 		$(1)/usr/lib/
 endef
 
@@ -210,12 +236,24 @@ define Package/qt5-xml/install
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/libQt5Xml.so* \
 		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Xml.prl \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5Xml.la \
+		$(1)/usr/lib/
 endef
 
 define Package/qt5-xmlpatterns/install
 	$(INSTALL_DIR) $(1)/usr/lib/
 	$(CP) \
 		$(PKG_INSTALL_DIR)/usr/lib/libQt5XmlPatterns.so* \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5XmlPatterns.prl \
+		$(1)/usr/lib/
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/lib/libQt5XmlPatterns.la \
 		$(1)/usr/lib/
 endef
 
