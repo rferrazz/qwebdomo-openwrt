@@ -154,6 +154,7 @@ endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(2)/bin 
+	$(INSTALL_DIR) $(1)/bin
 	$(INSTALL_DIR) $(1)/usr/mkspecs 
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/usr/include
@@ -165,7 +166,11 @@ define Build/InstallDev
 	$(INSTALL_DATA) ./files/qmake.mk $(STAGING_DIR)/mk/
 
 	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/bin/{qmake,moc,rcc,lrelease,qdoc} \
+		$(PKG_INSTALL_DIR)/usr/bin/* \
+		$(2)/bin/
+		
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/bin/* \
 		$(2)/bin/
 
 	$(CP) \

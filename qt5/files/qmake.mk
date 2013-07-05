@@ -8,15 +8,11 @@
 QMAKE_SPECFILE:=$(STAGING_DIR)/usr/mkspecs/linux-openwrt-g++
 
 TARGET_INCDIRS +=\
-	$(TOOLCHAIN_DIR)/include \
 	$(STAGING_DIR)/include \
-	$(TOOLCHAIN_DIR)/usr/include \
 	$(STAGING_DIR)/usr/include
 
 TARGET_LIBDIRS += \
-	$(TOOLCHAIN_DIR)/lib \
 	$(STAGING_DIR)/lib \
-	$(TOOLCHAIN_DIR)/usr/lib \
 	$(STAGING_DIR)/usr/lib 
 
 define Build/Configure/Qmake
