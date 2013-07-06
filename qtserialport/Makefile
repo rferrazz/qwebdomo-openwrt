@@ -7,6 +7,15 @@
 
 include $(TOPDIR)/rules.mk
 
+#
+# Copyright (C) 2013 Riccardo Ferrazzo <f.riccardo87@gmail.com>
+#
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+# 
+
+include $(TOPDIR)/rules.mk
+
 PKG_NAME:=qtserialport
 PKG_VERSION:=5.1.1
 PKG_RELEASE:=1
@@ -80,3 +89,5 @@ endef
 define Package/qtserialport/install
 	#todo
 endef
+
+$(eval $(call BuildPackage,qtserialport))
