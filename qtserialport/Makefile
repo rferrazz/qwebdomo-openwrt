@@ -43,6 +43,8 @@ endif
 
 define Build/Configure
 	$(CP) ./files/CMakeLists.txt $(PKG_BUILD_DIR)
+	$(INSTALL_DIR) $(PKG_INSTALL_DIR)/usr/include/QtSerialPort
+	$(CP) $(PKG_BUILD_DIR)/src/serialport/*.h $(PKG_INSTALL_DIR)/usr/include/QtSerialPort/
 	( cd $(PKG_BUILD_DIR); \
 	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 	CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
