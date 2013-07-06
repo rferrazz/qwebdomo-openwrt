@@ -32,4 +32,4 @@ set( src ./src/serialport/qserialport.cpp
 add_library( qtserialport SHARED ${src} )
 set_target_properties( qtserialport PROPERTIES VERSION "5.1" )
 
-target_link_libraries( qxmpp ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Core.so.5.0.2)
+target_link_libraries( qtserialport ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Core.so.5.0.2)
