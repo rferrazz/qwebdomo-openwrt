@@ -17,7 +17,7 @@ PKG_SOURCE_VERSION:=3d67dc67d5af7852cf8b82f0a0f91d83e9061a63
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_BUILD_DEPENDS:=+qt5-core +qt5-network +qt5-xml +qxmpp
+PKG_BUILD_DEPENDS:=+qt5-core +qt5-network +qt5-xml +qxmpp +qtserialport
 
 include $(INCLUDE_DIR)/package.mk
 $(call	include_mk, cmake.mk)
@@ -26,7 +26,7 @@ define 	Package/qwebdomo
   CATEGORY:=WHIA
   SECTION:=libraries
   TITLE:=qwebdomo
-  DEPENDS:=+qt5-core +qt5-network +qxmpp
+  DEPENDS:=+qt5-core +qt5-network +qxmpp +qtserialport
 endef
 
 ifeq ($(CONFIG_CCACHE),)

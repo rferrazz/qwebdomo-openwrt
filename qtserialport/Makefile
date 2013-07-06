@@ -74,7 +74,9 @@ define Build/Configure
 endef
 
 define Build/InstallDev
+#todo
 endef
 
 define Package/qtserialport/install
+#todo
 endef
