@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qtserialport
-PKG_VERSION:=5.1
+PKG_VERSION:=5.1.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -74,9 +74,9 @@ define Build/Configure
 endef
 
 define Build/InstallDev
-#todo
+	#todo
 endef
 
 define Package/qtserialport/install
-#todo
+	#todo
 endef
