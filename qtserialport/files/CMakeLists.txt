@@ -14,7 +14,7 @@ include_directories( "./src/serialport"
                      ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/usr/include
                      ${CMAKE_CURRENT_BINARY_DIR} )
 
-include_directories( ${CMAKE_FIND_ROOT_PATH}/usr/include/QtCore ${Qt5Core_INCLUDE_DIRS} )
+include_directories( ${CMAKE_FIND_ROOT_PATH}/usr/include/QtCore ${CMAKE_FIND_ROOT_PATH}/usr/include/QtCore/5.0.2/QtCore ${Qt5Core_INCLUDE_DIRS} )
 add_definitions( ${Qt5Core_DEFINITIONS} )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Core_EXECUTABLE_COMPILE_FLAGS}" )
 
