@@ -76,11 +76,24 @@ define Build/Configure
 endef
 
 define Build/InstallDev
-	#todo
+	$(INSTALL_DIR) $(1)/usr/include/QtSerialPort
+	$(INSTALL_DIR) $(1)/usr/lib
+
+	$(CP) \
+		$(PKG_INSTALL_DIR)/usr/include/QtSerialPort/* \
+		$(1)/usr/include/QtSerialPort/
+
+	$(CP) \
+		$(PKG_BUILD_DIR)/libqtserialport.so* \
+		$(1)/usr/lib/
 endef
 
 define Package/qtserialport/install
-	#todo
+	$(INSTALL_DIR) $(1)/usr/lib
+	
+	$(CP) \
+		$(PKG_BUILD_DIR)/libqtserialport.so* \
+		$(1)/usr/lib/
 endef
 
 $(eval $(call BuildPackage,qtserialport))
