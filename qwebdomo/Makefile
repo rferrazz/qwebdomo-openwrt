@@ -43,6 +43,8 @@ endif
 
 define Build/Configure
 	$(CP) ./files/CMakeLists.txt $(PKG_BUILD_DIR)
+	$(CP) ./files/plugins/fake/CMakeLists.txt $(PKG_BUILD_DIR)/plugins/fake/
+	$(CP) ./files/plugins/thermostat/CMakeLists.txt $(PKG_BUILD_DIR)/plugins/GME-thermostat/
 	( cd $(PKG_BUILD_DIR); \
 	CFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
 	CXXFLAGS="$(TARGET_CFLAGS) $(EXTRA_CFLAGS)" \
