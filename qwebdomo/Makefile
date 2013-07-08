@@ -82,7 +82,7 @@ define Build/InstallDev
 		$(1)/usr/include/
 		
 	$(CP) \
-		$(PKG_BUILD_DIR)/device/*.h \
+		$(PKG_BUILD_DIR)/core/device/*.h \
 		$(1)/usr/include/
 		
 	$(CP) \
