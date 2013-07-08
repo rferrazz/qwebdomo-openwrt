@@ -1,0 +1,8 @@
+#ifndef QT_SERIALPORT_MODULE_H
+#define QT_SERIALPORT_MODULE_H
+#include <QtCore/QtCore>
+#include "qserialport.h"
+#include "qserialportglobal.h"
+#include "qserialportinfo.h"
+#include "qtserialportversion.h"
+#endif
