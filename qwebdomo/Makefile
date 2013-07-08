@@ -108,11 +108,11 @@ define Package/qwebdomo/install
 		$(1)/usr/lib/
 	
 	$(CP) \
-		$(PKG_BUILD_DIR)/libfake.so \
+		$(PKG_BUILD_DIR)/plugins/fake/libfake.so \
 		$(1)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
-		$(PKG_BUILD_DIR)/libGME-thermostat.so \
+		$(PKG_BUILD_DIR)/plugins/GME-thermostat/libGME-thermostat.so \
 		$(1)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
