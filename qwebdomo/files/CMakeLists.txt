@@ -70,5 +70,5 @@ target_link_libraries( fake ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Core.so.5.0.2 
 add_library( GME-thermostat SHARED ./plugins/GME-thermostat/thermostatactuator.cpp ./plugins/GME-thermostat/thermostatactuator.h )
 target_link_libraries(GME-thermostat qwebdomo)
 target_link_libraries(GME-thermostat ${CMAKE_FIND_ROOT_PATH}/usr/lib/libqtserialport.so.5.1)
-target_link_libraries( fake ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Core.so.5.0.2 )
+target_link_libraries( GME-thermostat ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Core.so.5.0.2 )
 
