@@ -107,11 +107,11 @@ define Package/qwebdomo/install
 	
 	$(CP) \
 		$(PKG_BUILD_DIR)/libfake.so \
-		$(INSTALL_DIR)/usr/lib/webdomo/plugins/
+		$(1)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
-		"$(PKG_BUILD_DIR)/libGME-thermostat.so" \
-		$(INSTALL_DIR)/usr/lib/webdomo/plugins/
+		$(PKG_BUILD_DIR)/libGME-thermostat.so \
+		$(1)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
 		$(PKG_BUILD_DIR)/whia/default_config/* \
