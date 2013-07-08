@@ -62,5 +62,9 @@ target_link_libraries( whia ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Network.so.5.0
 target_link_libraries( whia ${CMAKE_FIND_ROOT_PATH}/usr/lib/libQt5Xml.so.5.0.2 )
 target_link_libraries( whia qwebdomo)
 
+qt5_use_modules(${PROJECT_NAME} Core)
+qt5_use_modules(${PROJECT_NAME} Network)
+qt5_use_modules(${PROJECT_NAME} Xml)
+
 add_subdirectory(plugins/fake)
 add_subdirectory(plugins/GME-thermostat)

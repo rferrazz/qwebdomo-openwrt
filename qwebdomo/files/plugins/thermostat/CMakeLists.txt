@@ -4,6 +4,9 @@ project(GME-thermostat)
 add_definitions(-DQT_PLUGIN)
 add_definitions(-DQT_SHARED)
 add_definitions(-DQT_DLL)
+add_definitions(${Qt5Core_DEFINITIONS} ${Qt5Network_DEFINITIONS} ${Qt5Xml_DEFINITIONS})
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Core_EXECUTABLE_COMPILE_FLAGS} ${Qt5Network_EXECUTABLE_COMPILE_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 
 add_library( GME-thermostat SHARED thermostatactuator.cpp thermostatactuator.h )
 target_link_libraries(GME-thermostat qwebdomo)
