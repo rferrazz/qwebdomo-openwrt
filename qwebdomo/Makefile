@@ -110,7 +110,7 @@ define Package/qwebdomo/install
 		$(INSTALL_DIR)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
-		$(PKG_BUILD_DIR)/libGME-thermostat.so \
+		"$(PKG_BUILD_DIR)/libGME-thermostat.so" \
 		$(INSTALL_DIR)/usr/lib/webdomo/plugins/
 		
 	$(CP) \
